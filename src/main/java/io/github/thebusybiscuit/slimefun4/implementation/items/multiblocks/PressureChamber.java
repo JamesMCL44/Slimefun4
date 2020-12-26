@@ -26,7 +26,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 public class PressureChamber extends MultiBlockMachine {
 
     public PressureChamber(Category category, SlimefunItemStack item) {
-        super(category, item, new ItemStack[] { new ItemStack(Material.SMOOTH_STONE_SLAB), new CustomItem(Material.DISPENSER, "Dispenser (Facing down)"), new ItemStack(Material.SMOOTH_STONE_SLAB), new ItemStack(Material.PISTON), new ItemStack(Material.GLASS), new ItemStack(Material.PISTON), new ItemStack(Material.PISTON), new ItemStack(Material.CAULDRON), new ItemStack(Material.PISTON) }, BlockFace.UP);
+        super(category, item, new ItemStack[] { new ItemStack(Material.SMOOTH_STONE_SLAB), new CustomItem(Material.DISPENSER, "發射器 (面朝下方)"), new ItemStack(Material.SMOOTH_STONE_SLAB), new ItemStack(Material.PISTON), new ItemStack(Material.GLASS), new ItemStack(Material.PISTON), new ItemStack(Material.PISTON), new ItemStack(Material.CAULDRON), new ItemStack(Material.PISTON) }, BlockFace.UP);
     }
 
     @Override

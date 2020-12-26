@@ -71,7 +71,7 @@ public class ElevatorPlate extends SimpleSlimefunItem<BlockUseHandler> {
             @Override
             public void onPlayerPlace(BlockPlaceEvent e) {
                 Block b = e.getBlock();
-                BlockStorage.addBlockInfo(b, DATA_KEY, ChatColor.WHITE + "Floor #0");
+                BlockStorage.addBlockInfo(b, DATA_KEY, ChatColor.WHITE + "樓層 #0");
                 BlockStorage.addBlockInfo(b, "owner", e.getPlayer().getUniqueId().toString());
             }
         };
@@ -183,9 +183,9 @@ public class ElevatorPlate extends SimpleSlimefunItem<BlockUseHandler> {
 
     @ParametersAreNonnullByDefault
     public void openEditor(Player p, Block b) {
-        ChestMenu menu = new ChestMenu("Elevator Settings");
+        ChestMenu menu = new ChestMenu("電梯設置");
 
-        menu.addItem(4, new CustomItem(Material.NAME_TAG, "&7Floor Name &e(Click to edit)", "", ChatColor.WHITE + ChatColors.color(BlockStorage.getLocationInfo(b.getLocation(), DATA_KEY))));
+        menu.addItem(4, new CustomItem(Material.NAME_TAG, "&7樓層名 &e(單擊編輯)", "", ChatColor.WHITE + ChatColors.color(BlockStorage.getLocationInfo(b.getLocation(), DATA_KEY))));
         menu.addMenuClickHandler(4, (pl, slot, item, action) -> {
             pl.closeInventory();
             pl.sendMessage("");

@@ -47,18 +47,18 @@ class GuideLayoutOption implements SlimefunGuideOption<SlimefunGuideLayout> {
             }
 
             ItemMeta meta = item.getItemMeta();
-            meta.setDisplayName(ChatColor.GRAY + "Slimefun Guide Design: " + ChatColor.YELLOW + ChatUtils.humanize(layout.name()));
+            meta.setDisplayName(ChatColor.GRAY + "指南布局: " + ChatColor.YELLOW + ChatUtils.humanize(layout.name()));
             List<String> lore = new ArrayList<>();
             lore.add("");
-            lore.add((layout == SlimefunGuideLayout.CHEST ? ChatColor.GREEN : ChatColor.GRAY) + "Chest");
-            lore.add((layout == SlimefunGuideLayout.BOOK ? ChatColor.GREEN : ChatColor.GRAY) + "Book");
+            lore.add((layout == SlimefunGuideLayout.CHEST ? ChatColor.GREEN : ChatColor.GRAY) + "箱子介面");
+            lore.add((layout == SlimefunGuideLayout.BOOK ? ChatColor.GREEN : ChatColor.GRAY) + "書本介面");
 
             if (p.hasPermission("slimefun.cheat.items")) {
-                lore.add((layout == SlimefunGuideLayout.CHEAT_SHEET ? ChatColor.GREEN : ChatColor.GRAY) + "Cheat Sheet");
+                lore.add((layout == SlimefunGuideLayout.CHEAT_SHEET ? ChatColor.GREEN : ChatColor.GRAY) + "作弊紙");
             }
 
             lore.add("");
-            lore.add(ChatColor.GRAY + "\u21E8 " + ChatColor.YELLOW + "Click to change your layout");
+            lore.add(ChatColor.GRAY + "\u21E8 " + ChatColor.YELLOW + "點擊更改布局");
             meta.setLore(lore);
             item.setItemMeta(meta);
 

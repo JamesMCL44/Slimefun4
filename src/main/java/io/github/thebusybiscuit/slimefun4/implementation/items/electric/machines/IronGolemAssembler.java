@@ -62,9 +62,9 @@ public class IronGolemAssembler extends AbstractEntityAssembler<IronGolem> {
 
     @Override
     protected void constructMenu(BlockMenuPreset preset) {
-        preset.addItem(1, new CustomItem(getHead(), "&7Pumpkin Slot", "", "&fThis Slot accepts Pumpkins"), ChestMenuUtils.getEmptyClickHandler());
-        preset.addItem(7, new CustomItem(getBody(), "&7Iron Block Slot", "", "&fThis Slot accepts Iron Blocks"), ChestMenuUtils.getEmptyClickHandler());
-        preset.addItem(13, new CustomItem(Material.CLOCK, "&7Cooldown: &b30 Seconds", "", "&fThis Machine takes up to half a Minute to operate", "&fso give it some Time!"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(1, new CustomItem(getHead(), "&7南瓜槽", "", "&f這裡可以放入南瓜"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(7, new CustomItem(getBody(), "&7鐵磚槽", "", "&f這裡可以放入鐵磚"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(13, new CustomItem(Material.CLOCK, "&7運行時間: &b30 秒", "", "&f這個機器需要半分鐘的時間裝配", "&f所以耐心等等吧!"), ChestMenuUtils.getEmptyClickHandler());
     }
 
     @Override

@@ -25,7 +25,7 @@ import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
  */
 public class DeathpointListener implements Listener {
 
-    private final DateTimeFormatter format = DateTimeFormatter.ofPattern("(MMM dd, yyyy @ hh:mm)", Locale.ROOT);
+    private final DateTimeFormatter format = DateTimeFormatter.ofPattern("(dd MMM yyyy @ hh:mm)", Locale.ROOT);
 
     public DeathpointListener(@Nonnull SlimefunPlugin plugin) {
         plugin.getServer().getPluginManager().registerEvents(this, plugin);

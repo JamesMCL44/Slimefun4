@@ -130,7 +130,7 @@ public abstract class Reactor extends AbstractEnergyProvider {
 
         switch (mode) {
         case GENERATOR:
-            menu.replaceExistingItem(4, new CustomItem(SlimefunItems.NUCLEAR_REACTOR, "&7Focus: &eElectricity", "", "&6Your Reactor will focus on Power Generation", "&6If your Energy Network doesn't need Power", "&6it will not produce any either", "", "&7\u21E8 Click to change the Focus to &eProduction"));
+            menu.replaceExistingItem(4, new CustomItem(SlimefunItems.NUCLEAR_REACTOR, "&7模式: &e發電", "", "&6反應堆將會專注於發電", "&6如果能源網絡中沒有機器需要電力", "&6它會進入待機狀態", "", "&7\u21E8 單擊修改模式為 &e生產"));
             menu.addMenuClickHandler(4, (p, slot, item, action) -> {
                 BlockStorage.addBlockInfo(b, MODE, ReactorMode.PRODUCTION.toString());
                 updateInventory(menu, b);
@@ -138,7 +138,7 @@ public abstract class Reactor extends AbstractEnergyProvider {
             });
             break;
         case PRODUCTION:
-            menu.replaceExistingItem(4, new CustomItem(SlimefunItems.PLUTONIUM, "&7Focus: &eProduction", "", "&6Your Reactor will focus on producing goods", "&6If your Energy Network doesn't need Power", "&6it will continue to run and simply will", "&6not generate any Power in the mean time", "", "&7\u21E8 Click to change the Focus to &ePower Generation"));
+            menu.replaceExistingItem(4, new CustomItem(SlimefunItems.PLUTONIUM, "&7模式: &e生產", "", "&6反應堆將會專注於生產副產物", "&6如果能源網絡中沒有機器需要電力", "&6它會繼續工作並且不發電", "", "&7\u21E8 單擊修改模式為 &e發電"));
             menu.addMenuClickHandler(4, (p, slot, item, action) -> {
                 BlockStorage.addBlockInfo(b, MODE, ReactorMode.GENERATOR.toString());
                 updateInventory(menu, b);
@@ -152,7 +152,7 @@ public abstract class Reactor extends AbstractEnergyProvider {
         BlockMenu port = getAccessPort(b.getLocation());
 
         if (port != null) {
-            menu.replaceExistingItem(INFO_SLOT, new CustomItem(Material.GREEN_WOOL, "&7Access Port", "", "&6Detected", "", "&7> Click to view Access Port"));
+            menu.replaceExistingItem(INFO_SLOT, new CustomItem(Material.GREEN_WOOL, "&7連接口", "", "&6已連接", "", "&7> 單擊查看連接口"));
             menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                 port.open(p);
                 updateInventory(menu, b);
@@ -160,7 +160,7 @@ public abstract class Reactor extends AbstractEnergyProvider {
                 return false;
             });
         } else {
-            menu.replaceExistingItem(INFO_SLOT, new CustomItem(Material.RED_WOOL, "&7Access Port", "", "&cNot detected", "", "&7Access Port must be", "&7placed 3 blocks above", "&7a reactor!"));
+            menu.replaceExistingItem(INFO_SLOT, new CustomItem(Material.RED_WOOL, "&7連接口", "", "&c未連接", "", "&7接口必須要放置在", "&7反應堆上面的第三格!"));
             menu.addMenuClickHandler(INFO_SLOT, (p, slot, item, action) -> {
                 updateInventory(menu, b);
                 menu.open(p);
@@ -184,19 +184,19 @@ public abstract class Reactor extends AbstractEnergyProvider {
 
         preset.addItem(22, new CustomItem(Material.BLACK_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
 
-        preset.addItem(1, new CustomItem(getFuelIcon(), "&7Fuel Slot", "", "&fThis Slot accepts radioactive Fuel such as:", "&2Uranium &for &aNeptunium"), ChestMenuUtils.getEmptyClickHandler());
+        preset.addItem(1, new CustomItem(getFuelIcon(), "&7燃料槽", "", "&r在這裡放入放射性燃料:", "&2鈾 &r或 &a镎"), ChestMenuUtils.getEmptyClickHandler());
 
         for (int i : border_2) {
             preset.addItem(i, new CustomItem(Material.CYAN_STAINED_GLASS_PANE, " "), ChestMenuUtils.getEmptyClickHandler());
         }
 
         if (needsCooling()) {
-            preset.addItem(7, new CustomItem(getCoolant(), "&bCoolant Slot", "", "&fThis Slot accepts Coolant Cells", "&4Without any Coolant Cells, your Reactor", "&4will explode"));
+            preset.addItem(7, new CustomItem(getCoolant(), "&b冷卻劑槽", "", "&r在此處放入冷卻劑", "&4如果沒有足夠冷卻劑,", "&4你的反應堆將會瞬間爆炸"));
         } else {
-            preset.addItem(7, new CustomItem(Material.BARRIER, "&bCoolant Slot", "", "&fThis Slot accepts Coolant Cells"));
+            preset.addItem(7, new CustomItem(Material.BARRIER, "&b冷卻劑槽", "", "&r在這裡放入冷卻劑"));
 
             for (int i : border_4) {
-                preset.addItem(i, new CustomItem(Material.BARRIER, "&cNo Coolant Required"), ChestMenuUtils.getEmptyClickHandler());
+                preset.addItem(i, new CustomItem(Material.BARRIER, "&c暫時無需冷卻劑"), ChestMenuUtils.getEmptyClickHandler());
             }
         }
     }

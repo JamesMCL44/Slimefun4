@@ -35,7 +35,7 @@ public class AncientAltar extends SlimefunItem {
         super(category, item, recipeType, recipe);
 
         if (speed < 1) {
-            throw new IllegalArgumentException("The speed must be at least 1.");
+            throw new IllegalArgumentException("速度必須不少於1");
         }
 
         this.speed = speed;

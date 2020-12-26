@@ -28,7 +28,7 @@ class VersionsCommand extends SubCommand {
             // so we will just fix this inconsistency for them :)
             String serverSoftware = PaperLib.isSpigot() && !PaperLib.isPaper() ? "Spigot" : Bukkit.getName();
 
-            sender.sendMessage(ChatColor.GRAY + "This Server uses the following setup of Slimefun:");
+            sender.sendMessage(ChatColor.GRAY + "此伺服器使用以下黏液科技設置:");
             sender.sendMessage(ChatColors.color("&a" + serverSoftware + " &2" + ReflectionUtils.getVersion()));
             sender.sendMessage(ChatColors.color("&aCS-CoreLib &2v" + SlimefunPlugin.getCSCoreLibVersion()));
             sender.sendMessage(ChatColors.color("&aSlimefun &2v" + SlimefunPlugin.getVersion()));
@@ -44,7 +44,7 @@ class VersionsCommand extends SubCommand {
             sender.sendMessage("");
 
             Collection<Plugin> addons = SlimefunPlugin.getInstalledAddons();
-            sender.sendMessage(ChatColors.color("&7Installed Addons: &8(" + addons.size() + ")"));
+            sender.sendMessage(ChatColors.color("&7已安裝額外插件: &8(" + addons.size() + ")"));
 
             for (Plugin plugin : addons) {
                 String version = plugin.getDescription().getVersion();

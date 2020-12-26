@@ -38,7 +38,7 @@ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 
 public class Talisman extends SlimefunItem {
 
-    protected static final Category TALISMANS_CATEGORY = new Category(new NamespacedKey(SlimefunPlugin.instance(), "talismans"), new CustomItem(SlimefunItems.COMMON_TALISMAN, "&7Talismans - &aTier I"), 2);
+    protected static final Category TALISMANS_CATEGORY = new Category(new NamespacedKey(SlimefunPlugin.instance(), "talismans"), new CustomItem(SlimefunItems.COMMON_TALISMAN, "&7護身符 - &aI"), 2);
 
     private final SlimefunItemStack enderTalisman;
 
@@ -74,9 +74,9 @@ public class Talisman extends SlimefunItem {
         this.chance = chance;
 
         if (!(this instanceof EnderTalisman)) {
-            String name = "&5Ender " + ChatColor.stripColor(getItem().getItemMeta().getDisplayName());
+            String name = ChatColor.stripColor(getItem().getItemMeta().getDisplayName() + "&5(終界)");
             List<String> lore = new ArrayList<>();
-            lore.add("&7&oEnder Infused");
+            lore.add("&7&o終界強化");
             lore.add("");
 
             for (String line : getItem().getItemMeta().getLore()) {

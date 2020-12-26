@@ -53,7 +53,7 @@ public class BookSlimefunGuide implements SlimefunGuideImplementation {
     private final ItemStack item;
 
     public BookSlimefunGuide() {
-        item = new SlimefunGuideItem(this, "&aSlimefun Guide &7(Book GUI)");
+        item = new SlimefunGuideItem(this, "&a科技指南 &7(書本界面)");
     }
 
     @Override
@@ -203,7 +203,7 @@ public class BookSlimefunGuide implements SlimefunGuideImplementation {
 
             openBook(p, profile, items, true);
         } else {
-            p.sendMessage(ChatColor.RED + "That Category is too big to open :/");
+            p.sendMessage(ChatColor.RED + "那個類別太大了以致無法打開 :/");
         }
     }
 
@@ -214,7 +214,7 @@ public class BookSlimefunGuide implements SlimefunGuideImplementation {
             Research research = item.getResearch();
 
             ChatComponent component = new ChatComponent(ChatUtils.crop(ChatColor.RED, item.getItemName()) + "\n");
-            component.setHoverEvent(new HoverEvent(ChatColor.RESET + item.getItemName(), ChatColor.DARK_RED.toString() + ChatColor.BOLD + SlimefunPlugin.getLocalization().getMessage(p, "guide.locked"), "", ChatColor.GREEN + "> Click to unlock", "", ChatColor.GRAY + "Cost: " + ChatColor.AQUA.toString() + research.getCost() + " Level(s)"));
+            component.setHoverEvent(new HoverEvent(ChatColor.RESET + item.getItemName(), ChatColor.DARK_RED.toString() + ChatColor.BOLD + SlimefunPlugin.getLocalization().getMessage(p, "guide.locked"), "", ChatColor.GREEN + "> 單擊解鎖", "", ChatColor.GRAY + "需要: " + ChatColor.AQUA.toString() + research.getCost() + " 級經驗"));
             component.setClickEvent(new ClickEvent(key, player -> SlimefunPlugin.runSync(() -> research.unlockFromGuide(this, player, profile, item, category, page))));
 
             items.add(component);
