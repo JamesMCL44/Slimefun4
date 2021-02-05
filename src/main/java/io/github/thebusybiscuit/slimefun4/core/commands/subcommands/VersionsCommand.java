@@ -50,7 +50,7 @@ class VersionsCommand extends SubCommand {
             // ComponentBuilder builder = new ComponentBuilder();
 
             // @formatter:off
-            builder.append("This Server uses the following setup of Slimefun:\n")
+            builder.append("此伺服器使用以下黏液科技設置:\n")
                 .color(ChatColor.GRAY)
                 .append(serverSoftware)
                 .color(ChatColor.GREEN)
@@ -130,11 +130,11 @@ class VersionsCommand extends SubCommand {
         //     .append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
 
         if (addons.isEmpty()) {
-            builder.append("No Addons installed").color(ChatColor.GRAY).italic(true);
+            builder.append("無額外插件").color(ChatColor.GRAY).italic(true);
             return;
         }
 
-        builder.append("Installed Addons: ").color(ChatColor.GRAY).append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
+        builder.append("額外插件: ").color(ChatColor.GRAY).append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
 
         for (Plugin plugin : addons) {
             String version = plugin.getDescription().getVersion();
