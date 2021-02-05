@@ -41,21 +41,28 @@ class VersionsCommand extends SubCommand {
              * so we will just fix this inconsistency for them :)
              */
             String serverSoftware = PaperLib.isSpigot() && !PaperLib.isPaper() ? "Spigot" : Bukkit.getName();
-
-
-            // ComponentBuilder builder = new ComponentBuilder();
+            ComponentBuilder builder = new ComponentBuilder();
             // builder.append("此伺服器使用以下黏液科技設置:\n").color(ChatColor.GRAY)
             //     .append(serverSoftware).color(ChatColor.GREEN).append(" " + Bukkit.getVersion() + '\n').color(ChatColor.DARK_GREEN)
             //     .append("Slimefun").color(ChatColor.GREEN).append(" v" + SlimefunPlugin.getVersion() + '\n').color(ChatColor.DARK_GREEN);
             // ComponentBuilder builder = new ComponentBuilder();
 
             // @formatter:off
-            builder.append("This Server uses the following setup of Slimefun:\n").color(ChatColor.GRAY).append(serverSoftware).color(ChatColor.GREEN).append(" " + Bukkit.getVersion() + '\n').color(ChatColor.DARK_GREEN).append("Slimefun ").color(ChatColor.GREEN).append(SlimefunPlugin.getVersion() + '\n').color(ChatColor.DARK_GREEN);
+            builder.append("此伺服器使用以下黏液科技設置:\n")
+                .color(ChatColor.GRAY).append(serverSoftware)
+                .color(ChatColor.GREEN).append(" " + Bukkit.getVersion() + '\n')
+                .color(ChatColor.DARK_GREEN).append("Slimefun ")
+                .color(ChatColor.GREEN)
+                .append(SlimefunPlugin.getVersion() + '\n')
+                .color(ChatColor.DARK_GREEN);
             // @formatter:on
 
             if (SlimefunPlugin.getMetricsService().getVersion() != null) {
                 // @formatter:off
-                builder.append("Metrics-Module ").color(ChatColor.GREEN).append("#" + SlimefunPlugin.getMetricsService().getVersion() + '\n').color(ChatColor.DARK_GREEN);
+                builder.append("Metrics-Module ")
+                    .color(ChatColor.GREEN)
+                    .append("#" + SlimefunPlugin.getMetricsService()
+                    .getVersion() + '\n').color(ChatColor.DARK_GREEN);
                 // @formatter:on
             }
 
@@ -118,11 +125,11 @@ class VersionsCommand extends SubCommand {
         //     .append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
 
         if (addons.isEmpty()) {
-            builder.append("No Addons installed").color(ChatColor.GRAY).italic(true);
+            builder.append("無額外插件").color(ChatColor.GRAY).italic(true);
             return;
         }
 
-        builder.append("Installed Addons: ").color(ChatColor.GRAY).append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
+        builder.append("額外插件: ").color(ChatColor.GRAY).append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
 
         for (Plugin plugin : addons) {
             String version = plugin.getDescription().getVersion();
