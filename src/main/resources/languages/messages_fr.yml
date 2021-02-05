@@ -4,7 +4,6 @@ commands:
   cheat: Vous permet de vous donnez des objets
   give: Donne à quelqu'un des objets Slimefun
   guide: Vous donne un guide Slimefun
-  timings: Informations sur la latence de votre serveur
   teleporter: Affiche les waypoints d'un autre joueur
   versions: Affiche toutes les extensions  installées
   search: Recherche dans votre guide le terme donné
@@ -25,6 +24,11 @@ commands:
     description: Charge l'objet que vous avez en main
     charge-success: L'objet a été chargé !
     not-rechargeable: Cet objet ne peut pas être chargé !
+  timings:
+    description: Timings pour Slimefun et ses addons
+    please-wait: "&eAttendez s'il vous plaît, les résultats arrivent !"
+    verbose-player: "&4Ce flag ne peux pas être utiliser par un joueur!"
+    unknown-flag: "&4Flag inconnu: &c%flag%"
 guide:
   search:
     message: "&bQue souhaitez-vous rechercher?"
@@ -110,12 +114,8 @@ messages:
   no-permission: "&4Vous n'avez pas les permissions requises pour faire ceci"
   usage: "&4Utilisation: &c%usage%"
   not-online: "&4%player% &cn'est pas en ligne!"
-  invalid-item: "&4%item% &cn'est pas un item valide!"
-  invalid-amount: "&4%amount% &cn'est pas un montant valide: il doit être supérieur
-    à 0!"
   given-item: '&bVous avez reçu &a%amount%&7 "%item%&7"'
   give-item: '&bVous avez donné &a%amount% &7"%item%&7" à %player%'
-  invalid-research: "&4%research% &cn'est pas une recherche valide!"
   give-research: '&bVous avez débloqué la recherche "%research%&7" à %player%'
   hungry: "&cVous avez trop faim pour faire ça!"
   disabled-in-world: "&4&lCet item a été désactivé dans ce monde"
@@ -138,6 +138,7 @@ messages:
     wizard: "&a&oVotre talisman vous a donné un meilleur niveau de Fortune mais a
       peut-être diminué plusieurs autres enchantements"
     caveman: "&a&oVotre Talisman vous a donné Célérité"
+    wise: "&a&oVotre talisman a doublé votre XP"
   soulbound-rune:
     fail: "&cVous pouvez lier un seul objet à la fois à votre âme"
     success: "&aVous avez réussi à lier cet objet à votre âme! Vous le garderez quand
@@ -193,6 +194,12 @@ messages:
       utiliser !"
     wrong-material: "&cVous ne pouvez pas escalader cette surface. Consultez votre
       guide Slimefun pour plus d'informations !"
+  invalid-item: "&4%item% &cn'est pas un item valide!"
+  invalid-amount: "&4%amount% &cn'est pas un montant valide: il doit être supérieur
+    à 0!"
+  invalid-research: "&4%research% &cn'est pas une recherche valide!"
+  bee-suit-slow-fall: "&eVos ailes d'abeille vous aideront à revenir au sol lentement
+    et en toute sécurité"
   mode-change: 'Vous avez changé votre &b%device% en mode : &9%mode%'
 machines:
   pattern-not-found: "&eDésolé, je ne reconnais pas cette recette. Veuillez disposer
@@ -341,7 +348,6 @@ languages:
   zh-CN: Chinois (Chine)
   el: Grec
   he: Hébreu
-  pt: Portugais (Portugal)
   ar: Arabe
   af: Afrikaans
   da: Danois
@@ -353,6 +359,7 @@ languages:
   fa: Persan
   th: Thaï
   ro: Roumain
+  pt: Portugais (Portugal)
   pt-BR: Portugais (Brésil)
   bg: Bulgare
   ko: Coréen

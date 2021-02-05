@@ -36,6 +36,9 @@ public class Translators {
         addTranslator("ishi-sama", SupportedLanguage.FRENCH, true);
         addTranslator("amarcais53", SupportedLanguage.FRENCH, true);
         addTranslator("NinoFutur", SupportedLanguage.FRENCH, true);
+        addTranslator("TheRetix", SupportedLanguage.FRENCH, true);
+        addTranslator("Aeris1One", SupportedLanguage.FRENCH, true);
+        addTranslator("Aomitsu", SupportedLanguage.FRENCH, true);
 
         // Translators - Italian
         addTranslator("xXDOTTORXx", SupportedLanguage.ITALIAN, true);
@@ -45,11 +48,21 @@ public class Translators {
         addTranslator("dracrus", SupportedLanguage.ITALIAN, true);
         addTranslator("prolletto64", SupportedLanguage.ITALIAN, true);
 
+        // Translators - Spanish
+        addTranslator("Luu7", "_Luu", SupportedLanguage.SPANISH, true);
+        addTranslator("Vravinite", SupportedLanguage.SPANISH, true);
+        addTranslator("NotUmBr4", SupportedLanguage.SPANISH, true);
+        addTranslator("dbzjjoe", SupportedLanguage.SPANISH, true);
+        addTranslator("DaHolyCheese", SupportedLanguage.SPANISH, true);
+        addTranslator("d-l-n", SupportedLanguage.SPANISH, true);
+
         // Translators - Latvian
         addTranslator("AgnisT", "NIKNAIZ", SupportedLanguage.LATVIAN, true);
 
         // Translators - Hungarian
         addTranslator("andris155", SupportedLanguage.HUNGARIAN, true);
+        addTranslator("KingDeadZ", SupportedLanguage.HUNGARIAN, true);
+        addTranslator("poma123", SupportedLanguage.HUNGARIAN, false);
 
         // Translators - Vietnamese
         addTranslator("HSGamer", SupportedLanguage.VIETNAMESE, false);
@@ -77,6 +90,9 @@ public class Translators {
         addTranslator("MrFriggo", SupportedLanguage.CZECH, true);
         addTranslator("100petr", SupportedLanguage.CZECH, true);
         addTranslator("frfole", SupportedLanguage.CZECH, true);
+        addTranslator("bobhenl", SupportedLanguage.CZECH, true);
+        addTranslator("janvrska", SupportedLanguage.CZECH, true);
+        addTranslator("LirCZE", SupportedLanguage.CZECH, true);
 
         // Translators - Russian
         addTranslator("SoSeDiK", SupportedLanguage.RUSSIAN, false);
@@ -86,13 +102,6 @@ public class Translators {
 
         // Translators - Ukrainian
         addTranslator("SoSeDiK", SupportedLanguage.UKRAINIAN, false);
-
-        // Translators - Spanish
-        addTranslator("Luu7", "_Luu", SupportedLanguage.SPANISH, true);
-        addTranslator("Vravinite", SupportedLanguage.SPANISH, true);
-        addTranslator("NotUmBr4", SupportedLanguage.SPANISH, true);
-        addTranslator("dbzjjoe", SupportedLanguage.SPANISH, true);
-        addTranslator("DaHolyCheese", SupportedLanguage.SPANISH, true);
 
         // Translators - Swedish
         addTranslator("NihilistBrew", "ma1yang2", SupportedLanguage.SWEDISH, false);
@@ -119,6 +128,7 @@ public class Translators {
         addTranslator("StarWishsama", "StarWish_Sama", SupportedLanguage.CHINESE_CHINA, false);
         addTranslator("Rothes", SupportedLanguage.CHINESE_CHINA, true);
         addTranslator("Chihsiao", SupportedLanguage.CHINESE_CHINA, true);
+        addTranslator("Jiejue233", SupportedLanguage.CHINESE_CHINA, true);
 
         // Translators - Chinese (Taiwan)
         addTranslator("BrineYT", "HeroBrineKing", SupportedLanguage.CHINESE_TAIWAN, true);
@@ -129,8 +139,13 @@ public class Translators {
         addTranslator("mohkamfer", "AgentBabbie", SupportedLanguage.ARABIC, false);
 
         // Translators - Hebrew
-        addTranslator("dhtdht020", SupportedLanguage.HEBREW, false);
-        addTranslator("Eylonnn", SupportedLanguage.HEBREW, false);
+        addTranslator("dhtdht020", SupportedLanguage.HEBREW, true);
+        addTranslator("Eylonnn", SupportedLanguage.HEBREW, true);
+        addTranslator("sarhatabaot", SupportedLanguage.HEBREW, false);
+        addTranslator("Timotiyadeyhakesem", SupportedLanguage.HEBREW, true);
+        addTranslator("PaladinBear", SupportedLanguage.HEBREW, true);
+        addTranslator("Molioron", SupportedLanguage.HEBREW, true);
+        addTranslator("McAlmog", SupportedLanguage.HEBREW, true);
 
         // Translators - Japanese
         addTranslator("bito-blosh", "Bloshop", SupportedLanguage.JAPANESE, false);
@@ -164,6 +179,7 @@ public class Translators {
 
         // Translators - Bulgarian
         addTranslator("DNBGlol", SupportedLanguage.BULGARIAN, true);
+        addTranslator("Pukejoy", SupportedLanguage.BULGARIAN, true);
 
         // Translators - Tagalog
         addTranslator("sccooottttie", SupportedLanguage.TAGALOG, true);
@@ -177,8 +193,10 @@ public class Translators {
         addTranslator("Sakanas", SupportedLanguage.PORTUGUESE_BRAZIL, true);
         addTranslator("krazybeat", SupportedLanguage.PORTUGUESE_BRAZIL, true);
         addTranslator("FaolanMalcadh", SupportedLanguage.PORTUGUESE_BRAZIL, true);
-        addTranslator("G4stavoM1ster", SupportedLanguage.PORTUGUESE_BRAZIL, true);
         addTranslator("Gusstavo", SupportedLanguage.PORTUGUESE_BRAZIL, true);
+        addTranslator("Day-OS", SupportedLanguage.PORTUGUESE_BRAZIL, true);
+        addTranslator("ooicram", SupportedLanguage.PORTUGUESE_BRAZIL, true);
+        addTranslator("Sxigames", SupportedLanguage.PORTUGUESE_BRAZIL, true);
     }
 
     @ParametersAreNonnullByDefault

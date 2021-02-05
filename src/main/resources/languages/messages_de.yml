@@ -4,7 +4,6 @@ commands:
   cheat: Ermöglicht das Cheaten von Items
   give: Gibt jemandem ein bestimmtes Item
   guide: Gibt dir das Slimefun-Handbuch
-  timings: Zeigt einige Informationen über die Performance
   teleporter: Erlaubt es dir Wegpunkte anderer Spieler anzusehen
   versions: Eine Liste aller installierter Addons
   search: Durchsucht dein Slimefun-Handbuch nach einem Begriff
@@ -25,6 +24,11 @@ commands:
     description: Lädt das Item in deiner Hand auf
     charge-success: Dein Item wurde erfolgreich aufgeladen!
     not-rechargeable: Dieses Item kann nicht aufgeladen werden!
+  timings:
+    description: Performance-Info für Slimefun und dessen Addons
+    please-wait: "&eEine Sekunde Geduld bitte... Die Ergebnisse werden aufbereitet!"
+    verbose-player: '&4Das "verbose" Argument kann nicht von Spielern verwendet werden.'
+    unknown-flag: "&4Unbekanntes Argument: &c%flag%"
 guide:
   search:
     message: "&bWonach möchtest du suchen?"
@@ -132,6 +136,7 @@ messages:
     wizard: "&a&oDein Talisman hat dein Glück-Level erhöht aber möglicherweise das
       Level einer anderen Verzauberung vermindert"
     caveman: "&a&oDein Talisman hat dir einen Abbau-Boost verschafft"
+    wise: "&a&oDein Talisman hat soeben deine Erfahrungspunkte verdoppelt"
   soulbound-rune:
     fail: "&cDu kannst nicht mehrere Items auf einmal an deine Seele binden"
     success: "&aDu hast dieses Item erfolgreich an deine Seele gebunden! Solltest
@@ -315,6 +320,7 @@ android:
       own: "&4Du kannst nicht dein eigenes Skript bewerten!"
       already: "&4Du hast dieses Skript bereits bewertet!"
     editor: Skripteditor
+    too-long: "&cDieses Skript ist zu lang, um es zu bearbeiten!"
 languages:
   default: Server-Standard
   en: Englisch
@@ -336,7 +342,6 @@ languages:
   zh-CN: Chinesisch (China)
   el: Griechisch
   he: Hebräisch
-  pt: Portugiesisch (Portugal)
   pt-BR: Portugiesisch (Brasilien)
   ar: Arabisch
   af: Afrikaans
@@ -349,6 +354,7 @@ languages:
   fa: Persisch
   th: Thailändisch
   ro: Rumänisch
+  pt: Portugiesisch (Portugal)
   bg: Bulgarisch
   ko: Koreanisch
   tr: Türkisch
@@ -367,3 +373,5 @@ cauldron:
   no-discoloring: "&4Du kannst Slimefun-Rüstung nicht entfärben"
 miner:
   no-ores: "&eIch konnte leider keine Erze in der Nähe finden!"
+placeholderapi:
+  profile-loading: Lade...

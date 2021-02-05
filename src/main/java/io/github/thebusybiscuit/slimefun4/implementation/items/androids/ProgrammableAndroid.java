@@ -58,7 +58,6 @@ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.interfaces.InventoryBlock;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.Objects.handlers.ItemHandler;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
@@ -76,6 +75,7 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
     protected final String texture;
     private final int tier;
 
+    @ParametersAreNonnullByDefault
     public ProgrammableAndroid(Category category, int tier, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(category, item, recipeType, recipe);
 
@@ -194,14 +194,14 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
      */
     public AndroidFuelSource getFuelSource() {
         switch (getTier()) {
-        case 1:
-            return AndroidFuelSource.SOLID;
-        case 2:
-            return AndroidFuelSource.LIQUID;
-        case 3:
-            return AndroidFuelSource.NUCLEAR;
-        default:
-            throw new IllegalStateException("Cannot convert the following Android tier to a fuel type: " + getTier());
+            case 1:
+                return AndroidFuelSource.SOLID;
+            case 2:
+                return AndroidFuelSource.LIQUID;
+            case 3:
+                return AndroidFuelSource.NUCLEAR;
+            default:
+                throw new IllegalStateException("Cannot convert the following Android tier to a fuel type: " + getTier());
         }
     }
 
@@ -425,7 +425,7 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
                             openScriptEditor(player, b);
                         }
                     } catch (Exception x) {
-                        Slimefun.getLogger().log(Level.SEVERE, "An Exception was thrown when a User tried to download a Script!", x);
+                        SlimefunPlugin.logger().log(Level.SEVERE, "An Exception was thrown when a User tried to download a Script!", x);
                     }
 
                     return false;
@@ -471,7 +471,12 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
 
         menu.addItem(1, new CustomItem(HeadTexture.SCRIPT_FORWARD.getAsItemStack(), "&2> 編輯腳本", "", "&a修改這腳本"));
         menu.addMenuClickHandler(1, (pl, slot, item, action) -> {
-            openScript(pl, b, getScript(b.getLocation()));
+            if (PatternUtils.DASH.split(BlockStorage.getLocationInfo(b.getLocation()).getString("script")).length <= MAX_SCRIPT_LENGTH) {
+                openScript(pl, b, getScript(b.getLocation()));
+            } else {
+                pl.closeInventory();
+                SlimefunPlugin.getLocalization().sendMessage(pl, "android.scripts.too-long");
+            }
             return false;
         });
 
@@ -559,38 +564,38 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
 
     private void registerDefaultFuelTypes() {
         switch (getFuelSource()) {
-        case SOLID:
-            registerFuelType(new MachineFuel(80, new ItemStack(Material.COAL_BLOCK)));
-            registerFuelType(new MachineFuel(45, new ItemStack(Material.BLAZE_ROD)));
-            registerFuelType(new MachineFuel(70, new ItemStack(Material.DRIED_KELP_BLOCK)));
+            case SOLID:
+                registerFuelType(new MachineFuel(80, new ItemStack(Material.COAL_BLOCK)));
+                registerFuelType(new MachineFuel(45, new ItemStack(Material.BLAZE_ROD)));
+                registerFuelType(new MachineFuel(70, new ItemStack(Material.DRIED_KELP_BLOCK)));
 
-            // Coal & Charcoal
-            registerFuelType(new MachineFuel(8, new ItemStack(Material.COAL)));
-            registerFuelType(new MachineFuel(8, new ItemStack(Material.CHARCOAL)));
+                // Coal & Charcoal
+                registerFuelType(new MachineFuel(8, new ItemStack(Material.COAL)));
+                registerFuelType(new MachineFuel(8, new ItemStack(Material.CHARCOAL)));
 
-            // Logs
-            for (Material mat : Tag.LOGS.getValues()) {
-                registerFuelType(new MachineFuel(2, new ItemStack(mat)));
-            }
+                // Logs
+                for (Material mat : Tag.LOGS.getValues()) {
+                    registerFuelType(new MachineFuel(2, new ItemStack(mat)));
+                }
 
-            // Wooden Planks
-            for (Material mat : Tag.PLANKS.getValues()) {
-                registerFuelType(new MachineFuel(1, new ItemStack(mat)));
-            }
+                // Wooden Planks
+                for (Material mat : Tag.PLANKS.getValues()) {
+                    registerFuelType(new MachineFuel(1, new ItemStack(mat)));
+                }
 
-            break;
-        case LIQUID:
-            registerFuelType(new MachineFuel(100, new ItemStack(Material.LAVA_BUCKET)));
-            registerFuelType(new MachineFuel(200, SlimefunItems.OIL_BUCKET));
-            registerFuelType(new MachineFuel(500, SlimefunItems.FUEL_BUCKET));
-            break;
-        case NUCLEAR:
-            registerFuelType(new MachineFuel(2500, SlimefunItems.URANIUM));
-            registerFuelType(new MachineFuel(1200, SlimefunItems.NEPTUNIUM));
-            registerFuelType(new MachineFuel(3000, SlimefunItems.BOOSTED_URANIUM));
-            break;
-        default:
-            throw new IllegalStateException("Unhandled Fuel Source: " + getFuelSource());
+                break;
+            case LIQUID:
+                registerFuelType(new MachineFuel(100, new ItemStack(Material.LAVA_BUCKET)));
+                registerFuelType(new MachineFuel(200, SlimefunItems.OIL_BUCKET));
+                registerFuelType(new MachineFuel(500, SlimefunItems.FUEL_BUCKET));
+                break;
+            case NUCLEAR:
+                registerFuelType(new MachineFuel(2500, SlimefunItems.URANIUM));
+                registerFuelType(new MachineFuel(1200, SlimefunItems.NEPTUNIUM));
+                registerFuelType(new MachineFuel(3000, SlimefunItems.BOOSTED_URANIUM));
+                break;
+            default:
+                throw new IllegalStateException("Unhandled Fuel Source: " + getFuelSource());
         }
     }
 
@@ -673,32 +678,33 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
         }
     }
 
+    @ParametersAreNonnullByDefault
     private void executeInstruction(Instruction instruction, Block b, BlockMenu inv, Config data, int index) {
         if (getAndroidType().isType(instruction.getRequiredType())) {
             String rotationData = data.getString("rotation");
             BlockFace face = rotationData == null ? BlockFace.NORTH : BlockFace.valueOf(rotationData);
 
             switch (instruction) {
-            case START:
-            case WAIT:
-                // We are "waiting" here, so we only move a step forward
-                BlockStorage.addBlockInfo(b, "index", String.valueOf(index));
-                break;
-            case REPEAT:
-                // "repeat" just means, we reset our index
-                BlockStorage.addBlockInfo(b, "index", String.valueOf(0));
-                break;
-            case CHOP_TREE:
-                // We only move to the next step if we finished chopping wood
-                if (chopTree(b, inv, face)) {
+                case START:
+                case WAIT:
+                    // We are "waiting" here, so we only move a step forward
                     BlockStorage.addBlockInfo(b, "index", String.valueOf(index));
-                }
-                break;
-            default:
-                // We set the index here in advance to fix moving android issues
-                BlockStorage.addBlockInfo(b, "index", String.valueOf(index));
-                instruction.execute(this, b, inv, face);
-                break;
+                    break;
+                case REPEAT:
+                    // "repeat" just means, we reset our index
+                    BlockStorage.addBlockInfo(b, "index", String.valueOf(0));
+                    break;
+                case CHOP_TREE:
+                    // We only move to the next step if we finished chopping wood
+                    if (chopTree(b, inv, face)) {
+                        BlockStorage.addBlockInfo(b, "index", String.valueOf(index));
+                    }
+                    break;
+                default:
+                    // We set the index here in advance to fix moving android issues
+                    BlockStorage.addBlockInfo(b, "index", String.valueOf(index));
+                    instruction.execute(this, b, inv, face);
+                    break;
             }
         }
     }
@@ -830,14 +836,20 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
         preset.addItem(34, getFuelSource().getItem(), ChestMenuUtils.getEmptyClickHandler());
     }
 
+    @ParametersAreNonnullByDefault
     public void addItems(Block b, ItemStack... items) {
+        Validate.notNull(b, "The Block cannot be null.");
+
         BlockMenu inv = BlockStorage.getInventory(b);
 
-        for (ItemStack item : items) {
-            inv.pushItem(item, getOutputSlots());
+        if (inv != null) {
+            for (ItemStack item : items) {
+                inv.pushItem(item, getOutputSlots());
+            }
         }
     }
 
+    @ParametersAreNonnullByDefault
     protected void move(Block b, BlockFace face, Block block) {
         if (block.getY() > 0 && block.getY() < block.getWorld().getMaxHeight() && block.isEmpty()) {
             BlockData blockData = Material.PLAYER_HEAD.createBlockData(data -> {
@@ -875,11 +887,7 @@ public class ProgrammableAndroid extends SlimefunItem implements InventoryBlock,
         throw new UnsupportedOperationException("Non-woodcutter Android tried to chop a Tree!");
     }
 
-    protected void farm(BlockMenu menu, Block block) {
-        throw new UnsupportedOperationException("Non-farming Android tried to farm!");
-    }
-
-    protected void exoticFarm(BlockMenu menu, Block block) {
+    protected void farm(Block b, BlockMenu menu, Block block, boolean isAdvanced) {
         throw new UnsupportedOperationException("Non-farming Android tried to farm!");
     }
 

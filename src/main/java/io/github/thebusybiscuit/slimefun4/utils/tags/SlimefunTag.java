@@ -62,7 +62,7 @@ public enum SlimefunTag implements Tag<Material> {
      * All command block variants
      */
     COMMAND_BLOCKS,
-    
+
     /**
      * All variants of Spawn Eggs
      */
@@ -119,6 +119,12 @@ public enum SlimefunTag implements Tag<Material> {
      * This also includes farmland and grass paths.
      */
     DIRT_VARIANTS,
+
+    /**
+     * All soil blocks for a fungus to grow on.
+     * This includes all dirt variants, nylium and soul soil.
+     */
+    FUNGUS_SOIL,
 
     /**
      * All variants of concrete powder.

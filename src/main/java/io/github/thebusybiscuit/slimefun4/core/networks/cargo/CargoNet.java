@@ -17,10 +17,9 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.thebusybiscuit.slimefun4.api.network.Network;
 import io.github.thebusybiscuit.slimefun4.api.network.NetworkComponent;
+import io.github.thebusybiscuit.slimefun4.core.attributes.HologramOwner;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-import io.github.thebusybiscuit.slimefun4.utils.holograms.SimpleHologram;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import me.mrCookieSlime.Slimefun.api.Slimefun;
 
 /**
  * The {@link CargoNet} is a type of {@link Network} which deals with {@link ItemStack} transportation.
@@ -37,7 +36,7 @@ import me.mrCookieSlime.Slimefun.api.Slimefun;
  * @author DNx5
  *
  */
-public class CargoNet extends AbstractItemNetwork {
+public class CargoNet extends AbstractItemNetwork implements HologramOwner {
 
     private static final int RANGE = 5;
     private static final int TICK_DELAY = SlimefunPlugin.getCfg().getInt("networks.cargo-ticker-delay");
@@ -75,6 +74,11 @@ public class CargoNet extends AbstractItemNetwork {
     }
 
     @Override
+    public String getId() {
+        return "CARGO_NETWORK";
+    }
+
+    @Override
     public int getRange() {
         return RANGE;
     }
@@ -88,19 +92,19 @@ public class CargoNet extends AbstractItemNetwork {
         }
 
         switch (id) {
-        case "CARGO_MANAGER":
-            return NetworkComponent.REGULATOR;
-        case "CARGO_NODE":
-            return NetworkComponent.CONNECTOR;
-        case "CARGO_NODE_INPUT":
-        case "CARGO_NODE_OUTPUT":
-        case "CARGO_NODE_OUTPUT_ADVANCED":
-        case "CT_IMPORT_BUS":
-        case "CT_EXPORT_BUS":
-        case "CHEST_TERMINAL":
-            return NetworkComponent.TERMINUS;
-        default:
-            return null;
+            case "CARGO_MANAGER":
+                return NetworkComponent.REGULATOR;
+            case "CARGO_NODE":
+                return NetworkComponent.CONNECTOR;
+            case "CARGO_NODE_INPUT":
+            case "CARGO_NODE_OUTPUT":
+            case "CARGO_NODE_OUTPUT_ADVANCED":
+            case "CT_IMPORT_BUS":
+            case "CT_EXPORT_BUS":
+            case "CHEST_TERMINAL":
+                return NetworkComponent.TERMINUS;
+            default:
+                return null;
         }
     }
 
@@ -119,40 +123,42 @@ public class CargoNet extends AbstractItemNetwork {
         if (to == NetworkComponent.TERMINUS) {
             String id = BlockStorage.checkID(l);
             switch (id) {
-            case "CARGO_NODE_INPUT":
-                inputNodes.add(l);
-                break;
-            case "CARGO_NODE_OUTPUT":
-            case "CARGO_NODE_OUTPUT_ADVANCED":
-                outputNodes.add(l);
-                break;
-            case "CHEST_TERMINAL":
-                terminals.add(l);
-                break;
-            case "CT_IMPORT_BUS":
-                imports.add(l);
-                break;
-            case "CT_EXPORT_BUS":
-                exports.add(l);
-                break;
-            default:
-                break;
+                case "CARGO_NODE_INPUT":
+                    inputNodes.add(l);
+                    break;
+                case "CARGO_NODE_OUTPUT":
+                case "CARGO_NODE_OUTPUT_ADVANCED":
+                    outputNodes.add(l);
+                    break;
+                case "CHEST_TERMINAL":
+                    terminals.add(l);
+                    break;
+                case "CT_IMPORT_BUS":
+                    imports.add(l);
+                    break;
+                case "CT_EXPORT_BUS":
+                    exports.add(l);
+                    break;
+                default:
+                    break;
             }
         }
     }
 
     public void tick(Block b) {
         if (!regulator.equals(b.getLocation())) {
-            SimpleHologram.update(b, "&4找到多個貨運管理器");
+
+            updateHologram(b, "&4Multiple Cargo Regulators connected");
             return;
         }
 
         super.tick();
 
         if (connectorNodes.isEmpty() && terminusNodes.isEmpty()) {
-            SimpleHologram.update(b, "&c未找到貨運節點");
+
+            updateHologram(b, "&cNo Cargo Nodes found");
         } else {
-            SimpleHologram.update(b, "&7狀態: &a&l在線");
+            updateHologram(b, "&7Status: &a&lONLINE");
 
             // Skip ticking if the threshold is not reached. The delay is not same as minecraft tick,
             // but it's based on 'custom-ticker-delay' config.
@@ -250,7 +256,7 @@ public class CargoNet extends AbstractItemNetwork {
             String str = BlockStorage.getLocationInfo(node).getString("frequency");
             return str == null ? 0 : Integer.parseInt(str);
         } catch (Exception x) {
-            Slimefun.getLogger().log(Level.SEVERE, x, () -> "An Error occurred while parsing a Cargo Node Frequency (" + node.getWorld().getName() + " - " + node.getBlockX() + "," + node.getBlockY() + "," + +node.getBlockZ() + ")");
+            SlimefunPlugin.logger().log(Level.SEVERE, x, () -> "An Error occurred while parsing a Cargo Node Frequency (" + node.getWorld().getName() + " - " + node.getBlockX() + "," + node.getBlockY() + "," + +node.getBlockZ() + ")");
             return 0;
         }
     }
