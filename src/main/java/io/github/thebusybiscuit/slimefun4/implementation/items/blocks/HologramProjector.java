@@ -91,7 +91,7 @@ public class HologramProjector extends SlimefunItem implements HologramOwner {
         });
 
 
-        menu.addItem(1, new CustomItem(Material.CLOCK, "&7Offset: &e" + NumberUtils.roundDecimalNumber(Double.valueOf(BlockStorage.getLocationInfo(projector.getLocation(), OFFSET_PARAMETER)) + 1.0D), "", "&rLeft Click: &7+0.1", "&rRight Click: &7-0.1"));
+        menu.addItem(1, new CustomItem(Material.CLOCK, "&7微調: &e" + NumberUtils.roundDecimalNumber(Double.valueOf(BlockStorage.getLocationInfo(projector.getLocation(), OFFSET_PARAMETER)) + 1.0D), "", "&r左點擊: &7+0.1", "&r右點擊: &7-0.1"));
         menu.addMenuClickHandler(1, (pl, slot, item, action) -> {
             double offset = NumberUtils.reparseDouble(Double.valueOf(BlockStorage.getLocationInfo(projector.getLocation(), OFFSET_PARAMETER)) + (action.isRightClicked() ? -0.1F : 0.1F));
             ArmorStand hologram = getArmorStand(projector, true);

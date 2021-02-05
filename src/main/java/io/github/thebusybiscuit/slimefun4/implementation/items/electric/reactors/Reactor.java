@@ -130,7 +130,7 @@ public abstract class Reactor extends AbstractEnergyProvider implements Hologram
         switch (mode) {
 
             case GENERATOR:
-                menu.replaceExistingItem(4, new CustomItem(SlimefunItems.NUCLEAR_REACTOR, "&7Focus: &eElectricity", "", "&6Your Reactor will focus on Power Generation", "&6If your Energy Network doesn't need Power", "&6it will not produce any either", "", "&7\u21E8 Click to change the Focus to &eProduction"));
+                menu.replaceExistingItem(4, new CustomItem(SlimefunItems.NUCLEAR_REACTOR, "&7模式: &e發電", "", "&6反應堆將會專注於發電", "&6如果能源網絡中沒有機器需要電力", "&6它會進入待機狀態", "", "&7\u21E8 單擊修改模式為 &e生產"));
                 menu.addMenuClickHandler(4, (p, slot, item, action) -> {
                     BlockStorage.addBlockInfo(b, MODE, ReactorMode.PRODUCTION.toString());
                     updateInventory(menu, b);
@@ -138,7 +138,7 @@ public abstract class Reactor extends AbstractEnergyProvider implements Hologram
                 });
                 break;
             case PRODUCTION:
-                menu.replaceExistingItem(4, new CustomItem(SlimefunItems.PLUTONIUM, "&7Focus: &eProduction", "", "&6Your Reactor will focus on producing goods", "&6If your Energy Network doesn't need Power", "&6it will continue to run and simply will", "&6not generate any Power in the mean time", "", "&7\u21E8 Click to change the Focus to &ePower Generation"));
+                menu.replaceExistingItem(4, new CustomItem(SlimefunItems.PLUTONIUM, "&7模式: &e生產", "", "&6反應堆將會專注於生產副產物", "&6如果能源網絡中沒有機器需要電力", "&6它會繼續工作並且不發電", "", "&7\u21E8 單擊修改模式為 &e發電"));
                 menu.addMenuClickHandler(4, (p, slot, item, action) -> {
                     BlockStorage.addBlockInfo(b, MODE, ReactorMode.GENERATOR.toString());
                     updateInventory(menu, b);

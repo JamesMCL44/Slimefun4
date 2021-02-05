@@ -35,7 +35,7 @@ class VersionsCommand extends SubCommand {
 
 
             ComponentBuilder builder = new ComponentBuilder();
-            builder.append("This Server uses the following setup of Slimefun:\n").color(ChatColor.GRAY)
+            builder.append("此伺服器使用以下黏液科技設置:\n").color(ChatColor.GRAY)
                 .append(serverSoftware).color(ChatColor.GREEN).append(" " + Bukkit.getVersion() + '\n').color(ChatColor.DARK_GREEN)
                 .append("Slimefun").color(ChatColor.GREEN).append(" v" + SlimefunPlugin.getVersion() + '\n').color(ChatColor.DARK_GREEN);
 
@@ -92,7 +92,7 @@ class VersionsCommand extends SubCommand {
 
     private void addPluginVersions(@Nonnull ComponentBuilder builder) {
         Collection<Plugin> addons = SlimefunPlugin.getInstalledAddons();
-        builder.append("Installed Addons: ").color(ChatColor.GRAY)
+        builder.append("已安裝額外插件: ").color(ChatColor.GRAY)
             .append("(" + addons.size() + ")").color(ChatColor.DARK_GRAY);
 
         for (Plugin plugin : addons) {

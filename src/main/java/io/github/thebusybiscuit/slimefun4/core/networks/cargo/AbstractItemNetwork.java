@@ -366,7 +366,7 @@ abstract class AbstractItemNetwork extends Network {
             List<String> lore = new ArrayList<>();
             lore.add("");
 
-            lore.add(ChatColors.color("&7Stored Items: &f" + NumberUtils.getCompactDouble(item.getInt())));
+            lore.add(ChatColors.color("&7已存放: &f" + NumberUtils.getCompactDouble(item.getInt())));
 
             if (stack.getMaxStackSize() > 1) {
                 int amount = item.getInt() > stack.getMaxStackSize() ? stack.getMaxStackSize() : item.getInt();

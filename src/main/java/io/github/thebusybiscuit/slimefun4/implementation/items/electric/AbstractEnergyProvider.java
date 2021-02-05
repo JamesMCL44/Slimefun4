@@ -114,7 +114,7 @@ public abstract class AbstractEnergyProvider extends SlimefunItem implements Inv
             lore.add(ChatColors.color("&8\u21E8 &7持續時間 " + NumberUtils.getTimeLeft(fuel.getTicks() / 2)));
             lore.add(ChatColors.color("&8\u21E8 &e\u26A1 &7" + getEnergyProduction() * 2) + " J/s");
 
-            lore.add(ChatColors.color("&8\u21E8 &e\u26A1 &7" + NumberUtils.getCompactDouble((double) fuel.getTicks() * getEnergyProduction()) + " J in total"));
+            lore.add(ChatColors.color("&8\u21E8 &e\u26A1 &7總計" + NumberUtils.getCompactDouble((double) fuel.getTicks() * getEnergyProduction()) + " J"));
             im.setLore(lore);
             item.setItemMeta(im);
             list.add(item);
