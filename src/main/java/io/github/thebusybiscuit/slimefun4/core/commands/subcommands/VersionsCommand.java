@@ -50,24 +50,12 @@ class VersionsCommand extends SubCommand {
             // ComponentBuilder builder = new ComponentBuilder();
 
             // @formatter:off
-            builder.append("This Server uses the following setup of Slimefun:\n")
-                .color(ChatColor.GRAY)
-                .append(serverSoftware)
-                .color(ChatColor.GREEN)
-                .append(" " + Bukkit.getVersion() + '\n')
-                .color(ChatColor.DARK_GREEN)
-                .append("Slimefun ")
-                .color(ChatColor.GREEN)
-                .append(SlimefunPlugin.getVersion() + '\n')
-                .color(ChatColor.DARK_GREEN);
+            builder.append("This Server uses the following setup of Slimefun:\n").color(ChatColor.GRAY).append(serverSoftware).color(ChatColor.GREEN).append(" " + Bukkit.getVersion() + '\n').color(ChatColor.DARK_GREEN).append("Slimefun ").color(ChatColor.GREEN).append(SlimefunPlugin.getVersion() + '\n').color(ChatColor.DARK_GREEN);
             // @formatter:on
 
             if (SlimefunPlugin.getMetricsService().getVersion() != null) {
                 // @formatter:off
-                builder.append("Metrics-Module ")
-                    .color(ChatColor.GREEN)
-                    .append("#" + SlimefunPlugin.getMetricsService().getVersion() + '\n')
-                    .color(ChatColor.DARK_GREEN);
+                builder.append("Metrics-Module ").color(ChatColor.GREEN).append("#" + SlimefunPlugin.getMetricsService().getVersion() + '\n').color(ChatColor.DARK_GREEN);
                 // @formatter:on
             }
 
